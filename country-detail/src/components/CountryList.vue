@@ -1,7 +1,7 @@
 <template>
 <div class="q-pa-md row wrap justify-center  q-gutter-lg"  v-if="countryList.length" >
 
-    <q-card class="country-summary" v-for="(country) in countryList" :key="country.name">
+    <q-card class="country-summary" v-for="(country) in countryList" :key="country.name" @click="redirect(country.name)">
       <img class="image" :src="country.flags.svg" alt="">
       <q-card-section>
         <div class="text-h6">{{country.name}}</div>
@@ -21,6 +21,8 @@
 <script>
 import { computed, onMounted } from '@vue/runtime-core'
 import {useStore } from 'vuex'
+import router from "@/router";
+
 export default{
 
     setup(){
@@ -32,8 +34,13 @@ export default{
       const countryList = computed(()=>{
         return store.getters['getCountryLists'];
       })
+
+      function redirect(name){
+        router.push({ name: 'country-detail', params: { id: name } })
+      }
         return {
             countryList,
+            redirect
         }
     }
 }
