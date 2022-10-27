@@ -1,26 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <q-layout view="lHh Lpr lFf">
+<div class="header">
+    <p> Where in the world?</p>
+    <q-btn color="white" text-color="black" label="Light Mode" flat no-caps></q-btn>
+  </div>
+    <q-page-container class="">
+    <CountryList></CountryList>
+
+    </q-page-container>
+      
+  </q-layout>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import CountryList from "@/components/CountryList.vue"
 export default {
-  name: 'App',
+  name: 'LayoutDefault',
+
   components: {
-    HelloWorld
+    CountryList,
+  },
+
+  setup () {
+    return {
+    }
   }
 }
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import './styles/app.scss';
 </style>
