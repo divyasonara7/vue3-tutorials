@@ -5,7 +5,7 @@
     <q-btn color="white" text-color="black" label="Light Mode" flat no-caps></q-btn>
   </div>
     <q-page-container class="">
-    <CountryList></CountryList>
+      <router-view :key="$route.path" />
     </q-page-container>
       
   </q-layout>
@@ -13,18 +13,8 @@
 </template>
 
 <script>
-import CountryList from "@/components/CountryList.vue"
 export default {
   name: 'LayoutDefault',
-
-  components: {
-    CountryList,
-  },
-
-  setup () {
-    return {
-    }
-  }
 }
 </script>
 <style>
