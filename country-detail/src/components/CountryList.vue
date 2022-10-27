@@ -2,20 +2,18 @@
 <div class="q-pa-md row wrap justify-center  q-gutter-lg"  v-if="countryList.length" >
 
     <q-card class="country-summary" v-for="(country) in countryList" :key="country.name" @click="redirect(country.name)">
-      <img class="image" :src="country.flags.svg" alt="">
+      <img class="image" :src="country.flags.svg" alt="country flag">
       <q-card-section>
         <div class="text-h6">{{country.name}}</div>
-       <div class="text-subtitle2"><span>Population:</span>  {{  new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(country.population)}}</div>
-        <div class="text-subtitle2"><span>Region:</span> {{country.region}}</div>
-        <div class="text-subtitle2"><span>Capital:</span> {{country.capital}}</div>
+        <div><span>Capital:</span> {{country.capital}}</div>
+       <div><span>Population:</span>  {{  new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(country.population)}}</div>
+        <div><span>Region:</span> {{country.region}}</div>
       </q-card-section>
     </q-card> 
-
-
 </div> 
 
 <div class="text-center" v-else>
-  <h6> Opps! No data found.</h6>
+  <h6>Searching......</h6>
 </div>
 </template>
 <script>
