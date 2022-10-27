@@ -2,11 +2,11 @@
     padding-inline: 6vw;
     padding-block: max(1.1em,1.8vw);
     margin-inline: auto;
-    background-color: var(--color-elements);
+    background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--color-text);
+    color: black;
     box-shadow: #00000029 0 -4px 10px 1px;
     position: sticky;
     top: 0;
@@ -23,3 +23,6 @@ p{
     font-weight: bold;
 }
 
+span{
+    font-weight: bold;
+}

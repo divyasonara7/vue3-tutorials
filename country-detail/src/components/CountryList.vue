@@ -1,20 +1,43 @@
 <template>
-<div class="q-pa-md row wrap justify-center  q-gutter-lg"  >
-    <q-card class="country-summary">
-      <img src="https://cdn.quasar.dev/img/mountains.jpg">
+<div class="q-pa-md row wrap justify-center  q-gutter-lg"  v-if="countryList.length" >
+
+    <q-card class="country-summary" v-for="(country) in countryList" :key="country.name">
+      <img class="image" :src="country.flags.svg" alt="">
       <q-card-section>
-        <div class="text-h6">Our Changing Planet</div>
-        <div class="text-subtitle2">by John Doe</div>
+        <div class="text-h6">{{country.name}}</div>
+       <div class="text-subtitle2"><span>Population:</span>  {{  new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(country.population)}}</div>
+        <div class="text-subtitle2"><span>Region:</span> {{country.region}}</div>
+        <div class="text-subtitle2"><span>Capital:</span> {{country.capital}}</div>
       </q-card-section>
+    </q-card> 
 
-      <q-card-section class="q-pt-none">
-        Hello
-      </q-card-section>
-    </q-card>
 
-</div>  
+</div> 
+
+<div class="text-center" v-else>
+  <h6> Opps! No data found.</h6>
+</div>
 </template>
+<script>
+import { computed, onMounted } from '@vue/runtime-core'
+import {useStore } from 'vuex'
+export default{
 
+    setup(){
+        const store = useStore();
+        onMounted(async ()=>{
+          await store.dispatch('getCountryList')
+        })
+
+      const countryList = computed(()=>{
+        return store.getters['getCountryLists'];
+      })
+        return {
+            countryList,
+        }
+    }
+}
+</script>
 <style scoped>
 .country-summary{
     max-width: 200px;
