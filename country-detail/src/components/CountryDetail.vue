@@ -2,7 +2,7 @@
 
     <div class="q-pa-md">
         <div class="back-btn">
-        <q-btn color="white" text-color="black" label="Back" @click="this.$router.back()" no-caps></q-btn>
+        <q-btn  label="Back" @click="this.$router.back()"  no-caps></q-btn>
     </div>
     <div class="row justify-center">
       <div class="col-12 col-md-4 ">
